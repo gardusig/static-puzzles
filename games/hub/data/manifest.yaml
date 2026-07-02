@@ -1,0 +1,4 @@
+version: 1
+min_rows: 0
+files: []
+notes: Per-game puzzle banks under games/{sudoku,chess,...}/data/

@@ -1,0 +1,39 @@
+# Static newspaper puzzles — Chrome-first, offline solo
+version: 1
+
+hub: static-puzzles
+browser_target: chrome
+category: static
+
+games:
+  sudoku:
+    title: Sudoku
+    slug: sudoku
+    status: planned
+    description: Classic 9×9 grids — notes, check, reveal answer.
+    frontend_route: /play/sudoku
+    tags: [logic, grid, offline]
+
+  chess:
+    title: Chess Puzzles
+    slug: chess
+    status: planned
+    description: Mate-in-N and tactics — minimal board, clear legal moves.
+    frontend_route: /play/chess
+    tags: [logic, board, offline]
+
+  checkers:
+    title: Checkers
+    slug: checkers
+    status: planned
+    description: Simple 8×8 board — hints for legal jumps.
+    frontend_route: /play/checkers
+    tags: [logic, board, offline]
+
+  crosswords:
+    title: Crosswords
+    slug: crosswords
+    status: planned
+    description: Clue list + grid — check letter or word.
+    frontend_route: /play/crosswords
+    tags: [word, grid, offline]
