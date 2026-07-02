@@ -1,0 +1,72 @@
+name: Game
+description: Track implementation of one static puzzle game
+title: "[game] "
+labels:
+  - game
+body:
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      description: Must match games.yaml key (e.g. chess, n-queens)
+      placeholder: chess
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: tags
+    attributes:
+      label: Tags (from tags.yaml)
+      options:
+        - label: board
+        - label: grid
+        - label: logic
+        - label: word
+        - label: spatial
+        - label: sequence
+        - label: match
+        - label: placement
+        - label: stack
+        - label: offline
+        - label: chrome
+        - label: single-player
+        - label: minimal-animation
+        - label: newspaper
+        - label: drag-drop
+        - label: click
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements (Must)
+      description: Paste from docs/REQUIREMENTS.md for this slug
+      placeholder: "- 9×9 grid...\n- Cell notes..."
+
+  - type: textarea
+    id: data
+    attributes:
+      label: Data files
+      description: Expected paths under games/{slug}/data/
+      placeholder: games/chess/data/puzzles.csv
+
+  - type: checkboxes
+    id: done
+    attributes:
+      label: Definition of done
+      options:
+        - label: Route /play/{slug} loads in Chrome
+        - label: Puzzle bank in git; offline after first load
+        - label: Invalid moves / check / reveal work
+        - label: games.yaml status → active; github_issue set
+        - label: Launcher card links to game

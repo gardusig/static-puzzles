@@ -1,39 +1,154 @@
-# Static newspaper puzzles — Chrome-first, offline solo
-version: 1
+# Static puzzles catalog — each game maps to a GitHub issue (todo).
+# Status: planned | in_progress | active
+version: 2
 
 hub: static-puzzles
 browser_target: chrome
 category: static
+
+issue_label: game
+issue_milestone: null
 
 games:
   sudoku:
     title: Sudoku
     slug: sudoku
     status: planned
+    priority: high
+    github_issue: null
     description: Classic 9×9 grids — notes, check, reveal answer.
     frontend_route: /play/sudoku
-    tags: [logic, grid, offline]
+    tags: [grid, logic, offline, newspaper, click]
+    requirements: docs/REQUIREMENTS.md#sudoku
 
   chess:
     title: Chess Puzzles
     slug: chess
     status: planned
+    priority: high
+    github_issue: null
     description: Mate-in-N and tactics — minimal board, clear legal moves.
     frontend_route: /play/chess
-    tags: [logic, board, offline]
+    tags: [board, logic, offline, newspaper, drag-drop]
+    requirements: docs/REQUIREMENTS.md#chess
 
   checkers:
     title: Checkers
     slug: checkers
     status: planned
-    description: Simple 8×8 board — hints for legal jumps.
+    priority: medium
+    github_issue: null
+    description: 8×8 draughts — legal jumps, king promotion, hint mode.
     frontend_route: /play/checkers
-    tags: [logic, board, offline]
+    tags: [board, logic, offline, drag-drop]
+    requirements: docs/REQUIREMENTS.md#checkers
+
+  go:
+    title: Go Puzzles
+    slug: go
+    status: planned
+    priority: medium
+    github_issue: null
+    description: Life-and-death and capture puzzles on 9×9 or 19×19.
+    frontend_route: /play/go
+    tags: [board, logic, offline, placement]
+    requirements: docs/REQUIREMENTS.md#go
+
+  logic-puzzles:
+    title: Logic Puzzles
+    slug: logic-puzzles
+    status: planned
+    priority: medium
+    github_issue: null
+    description: Grid deduction — categories, clues, single solution (newspaper logic).
+    frontend_route: /play/logic-puzzles
+    tags: [grid, logic, offline, newspaper, click]
+    requirements: docs/REQUIREMENTS.md#logic-puzzles
+
+  nonogram:
+    title: Nonogram
+    slug: nonogram
+    status: planned
+    priority: medium
+    github_issue: null
+    description: Picture logic from row and column run-length clues.
+    frontend_route: /play/nonogram
+    tags: [grid, logic, offline, newspaper, click]
+    requirements: docs/REQUIREMENTS.md#nonogram
+
+  sorting-puzzle:
+    title: Sorting Puzzle
+    slug: sorting-puzzle
+    status: planned
+    priority: low
+    github_issue: null
+    description: Water-sort style — pour between tubes until colors stack correctly.
+    frontend_route: /play/sorting-puzzle
+    tags: [spatial, sequence, stack, offline, minimal-animation, drag-drop]
+    requirements: docs/REQUIREMENTS.md#sorting-puzzle
+
+  unscrew-puzzle:
+    title: Unscrew Puzzle
+    slug: unscrew-puzzle
+    status: planned
+    priority: low
+    github_issue: null
+    description: Remove bolts in valid order — collision and layer rules.
+    frontend_route: /play/unscrew-puzzle
+    tags: [spatial, sequence, offline, minimal-animation, click]
+    requirements: docs/REQUIREMENTS.md#unscrew-puzzle
+
+  bubble-shooter:
+    title: Bubble Shooter
+    slug: bubble-shooter
+    status: planned
+    priority: low
+    github_issue: null
+    description: Aim and shoot — match clusters; step mode, no realtime pressure.
+    frontend_route: /play/bubble-shooter
+    tags: [match, spatial, offline, minimal-animation, click]
+    requirements: docs/REQUIREMENTS.md#bubble-shooter
+
+  domino:
+    title: Domino
+    slug: domino
+    status: planned
+    priority: medium
+    github_issue: null
+    description: Place tiles matching pip counts — chain from a fixed start.
+    frontend_route: /play/domino
+    tags: [board, match, placement, offline, drag-drop]
+    requirements: docs/REQUIREMENTS.md#domino
+
+  spider-solitaire:
+    title: Spider Solitaire
+    slug: spider-solitaire
+    status: planned
+    priority: medium
+    github_issue: null
+    description: Ten-column spider — build descending suited runs, deal row.
+    frontend_route: /play/spider-solitaire
+    tags: [stack, sequence, offline, single-player, drag-drop]
+    requirements: docs/REQUIREMENTS.md#spider-solitaire
+
+  n-queens:
+    title: N Queens
+    slug: n-queens
+    status: planned
+    priority: medium
+    github_issue: null
+    description: Place N queens on N×N with no mutual attack — all solutions or one.
+    frontend_route: /play/n-queens
+    tags: [grid, logic, placement, offline, click]
+    requirements: docs/REQUIREMENTS.md#n-queens
 
   crosswords:
     title: Crosswords
     slug: crosswords
     status: planned
-    description: Clue list + grid — check letter or word.
+    priority: low
+    github_issue: null
+    description: Clue list plus grid — check letter, word, or full puzzle.
     frontend_route: /play/crosswords
-    tags: [word, grid, offline]
+    tags: [word, grid, offline, newspaper, click]
+    requirements: docs/REQUIREMENTS.md#crosswords
