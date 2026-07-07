@@ -17,4 +17,4 @@ planned_games:
   - n-queens
   - crosswords
 
-notes: Per-game puzzle banks under games/{slug}/data/ — see docs/REQUIREMENTS.md
+notes: Per-game puzzle banks under src/games/{slug}/data/ — see docs/REQUIREMENTS.md
