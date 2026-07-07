@@ -24,10 +24,7 @@ Not multiplayer. Not 3D. Open a puzzle, think, close.
 
 **Todo = GitHub issues.** One issue per slug, label `game`. List: [`docs/GAMES.md`](docs/GAMES.md). Specs: [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md).
 
-```bash
-./scripts/create-game-issues.sh          # preview
-./scripts/create-game-issues.sh --create # open issues
-```
+Create issues directly in GitHub using the game template.
 
 ## Tags
 
@@ -40,7 +37,7 @@ Generic tags in [`tags.yaml`](tags.yaml) — `board`, `grid`, `logic`, `offline`
 ## Run launcher (picker only for now)
 
 ```bash
-cd launcher/frontend
+cd src/launcher/frontend
 npm install
 npm run dev
 ```
@@ -56,10 +53,8 @@ docs/
   REQUIREMENTS.md       # per-game Must/Should/Data
   GAMES.md              # issue todo table
   GOALS.md              # product scope
-games/{slug}/data/      # puzzle banks (CSV/JSON)
-launcher/frontend/      # Chrome hub
-scripts/
-  create-game-issues.sh
+src/games/{slug}/data/      # puzzle banks (CSV/JSON)
+src/launcher/frontend/      # Chrome hub
 ```
 
 Backend optional — validate client-side where possible.

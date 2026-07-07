@@ -5,7 +5,7 @@ Each game below is a **todo**: one GitHub issue per slug (label `game`). Ship wh
 Shared **Must** for all games:
 
 - Runs in Chrome without install; static or step-based UI
-- Puzzle data versioned under `games/{slug}/data/` (CSV/JSON)
+- Puzzle data versioned under `src/games/{slug}/data/` (CSV/JSON)
 - Solo play; no network after first load
 - Invalid moves show a clear message; optional hint and reveal-answer
 - Keyboard accessible where clicks are primary input

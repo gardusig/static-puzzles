@@ -22,17 +22,12 @@ Every game in `games.yaml` is **one GitHub issue**. The repo ships when issues c
 
 1. Open an issue with the **Game** template (label `game`, slug in title).
 2. Copy the **Must** checklist from [`REQUIREMENTS.md`](REQUIREMENTS.md) into the issue body.
-3. Implement under `games/{slug}/` + route `/play/{slug}`.
+3. Implement under `src/games/{slug}/` + route `/play/{slug}`.
 4. Set `status: active` in `games.yaml` and fill `github_issue: <number>` when done.
 
 ## Create issues from catalog
 
-```bash
-./scripts/create-game-issues.sh          # dry-run
-./scripts/create-game-issues.sh --create # opens one issue per planned game
-```
-
-After creation, update `github_issue` fields in `games.yaml` and this table.
+Open issues directly in GitHub using the Game template. After creation, update `github_issue` fields in `games.yaml` and this table.
 
 ## Tags
 
