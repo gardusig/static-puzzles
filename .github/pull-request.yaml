@@ -1,5 +1,4 @@
 repo: gardusig/static-puzzles
-dockerfile: docker/static-puzzles.dockerfile
 jobs:
 - id: lint
   name: Repo lint
