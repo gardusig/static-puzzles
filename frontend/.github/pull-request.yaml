@@ -1,4 +1,4 @@
-repo: gardusig/static-puzzles
+repo: gardusig/static-puzzles-frontend
 jobs:
 - id: lint
   name: Repo lint
@@ -8,27 +8,33 @@ jobs:
   target: repo-hygiene
   needs: lint
   hygiene_policy:
-    max_depth: 4
+    max_depth: 8
     allowed_root_dirs:
     - .github
-    - docs
+    - .workflows
+    - scripts
     - src
-    - tests
+    - test
     allowed_root_files:
+    - .gitignore
+    - Dockerfile
+    - LICENSE
+    - Makefile
     - README.md
-    - games.yaml
-    - tags.yaml
     allowed_extensions:
     - .css
     - .html
     - .js
-    - .json
     - .jsx
+    - .json
     - .md
+    - .sh
     - .yaml
     - .yml
     allowed_filenames:
     - .gitignore
+    - Dockerfile
     - LICENSE
+    - Makefile
     allowed_paths:
     - .github/pull-request.yaml
