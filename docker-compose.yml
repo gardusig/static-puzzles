@@ -1,0 +1,205 @@
+services:
+  # ═══════════════════════════════════════════
+  # Phase 1: Database
+  # ═══════════════════════════════════════════
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /data"
+    volumes:
+      - dynamodb-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8000 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+  # ═══════════════════════════════════════════
+  # Phase 2: Backend Services
+  # ═══════════════════════════════════════════
+  sudoku-service:
+    build: backend/services/sudoku
+    ports:
+      - "5010:5010"
+    environment:
+      PORT: "5010"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      dynamodb-local: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5010/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  numerox-service:
+    build: backend/services/numerox
+    ports:
+      - "5011:5011"
+    environment:
+      PORT: "5011"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      dynamodb-local: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5011/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  numerox-letters-service:
+    build: backend/services/numerox-letters
+    ports:
+      - "5012:5012"
+    environment:
+      PORT: "5012"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      dynamodb-local: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5012/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  logic-puzzles-service:
+    build: backend/services/logic-puzzles
+    ports:
+      - "5013:5013"
+    environment:
+      PORT: "5013"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      dynamodb-local: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5013/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  crosswords-service:
+    build: backend/services/crosswords
+    ports:
+      - "5014:5014"
+    environment:
+      PORT: "5014"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      dynamodb-local: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5014/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  tango-service:
+    build: backend/services/tango
+    ports:
+      - "5015:5015"
+    environment:
+      PORT: "5015"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      dynamodb-local: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5015/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  n-queens-service:
+    build: backend/services/n-queens
+    ports:
+      - "5016:5016"
+    environment:
+      PORT: "5016"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      dynamodb-local: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:5016/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  gateway:
+    build: backend/services/gateway
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      SUDOKU_SERVICE_URL: "http://sudoku-service:5010"
+      NUMEROX_SERVICE_URL: "http://numerox-service:5011"
+      NUMEROX_LETTERS_SERVICE_URL: "http://numerox-letters-service:5012"
+      LOGIC_PUZZLES_SERVICE_URL: "http://logic-puzzles-service:5013"
+      CROSSWORDS_SERVICE_URL: "http://crosswords-service:5014"
+      TANGO_SERVICE_URL: "http://tango-service:5015"
+      N_QUEENS_SERVICE_URL: "http://n-queens-service:5016"
+    depends_on:
+      sudoku-service: { condition: service_healthy }
+      numerox-service: { condition: service_healthy }
+      numerox-letters-service: { condition: service_healthy }
+      logic-puzzles-service: { condition: service_healthy }
+      crosswords-service: { condition: service_healthy }
+      tango-service: { condition: service_healthy }
+      n-queens-service: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/health || exit 1"]
+      interval: 5s; timeout: 3s; retries: 10; start_period: 10s
+
+  # ═══════════════════════════════════════════
+  # Phase 3: Frontend Apps
+  # ═══════════════════════════════════════════
+  launcher:
+    build: frontend/apps/launcher
+    ports:
+      - "8091:8091"
+    depends_on:
+      gateway: { condition: service_healthy }
+
+  sudoku-frontend:
+    build: frontend/apps/sudoku
+    ports:
+      - "5001:5001"
+
+  numerox-frontend:
+    build: frontend/apps/numerox
+    ports:
+      - "5002:5002"
+
+  numerox-letters-frontend:
+    build: frontend/apps/numerox-letters
+    ports:
+      - "5003:5003"
+
+  logic-puzzles-frontend:
+    build: frontend/apps/logic-puzzles
+    ports:
+      - "5004:5004"
+
+  crosswords-frontend:
+    build: frontend/apps/crosswords
+    ports:
+      - "5005:5005"
+
+  tango-frontend:
+    build: frontend/apps/tango
+    ports:
+      - "5006:5006"
+
+  n-queens-frontend:
+    build: frontend/apps/n-queens
+    ports:
+      - "5007:5007"
+
+volumes:
+  dynamodb-data:

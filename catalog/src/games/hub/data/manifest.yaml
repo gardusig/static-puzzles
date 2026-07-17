@@ -1,0 +1,20 @@
+version: 1
+min_rows: 0
+files: []
+
+planned_games:
+  - sudoku
+  - chess
+  - checkers
+  - go
+  - logic-puzzles
+  - nonogram
+  - sorting-puzzle
+  - unscrew-puzzle
+  - bubble-shooter
+  - domino
+  - spider-solitaire
+  - n-queens
+  - crosswords
+
+notes: Per-game puzzle banks under src/games/{slug}/data/ — see docs/REQUIREMENTS.md

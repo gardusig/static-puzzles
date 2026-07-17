@@ -1,0 +1,67 @@
+# Generic tags for static-puzzles — use on games, issues, and PRs.
+version: 1
+
+tags:
+  board:
+    label: board
+    description: Piece placement on a fixed board (chess, checkers, go, domino).
+
+  grid:
+    label: grid
+    description: Cell-based layout (sudoku, nonogram, logic grids, n-queens).
+
+  logic:
+    label: logic
+    description: Deduction, constraints, or proof-style reasoning.
+
+  word:
+    label: word
+    description: Letters, clues, or vocabulary (crosswords).
+
+  spatial:
+    label: spatial
+    description: Rotation, stacking, or 2D arrangement (unscrew, sorting).
+
+  sequence:
+    label: sequence
+    description: Order matters — chains, stacks, or move sequences.
+
+  match:
+    label: match
+    description: Pairing or clearing by pattern (bubble shooter, domino ends).
+
+  placement:
+    label: placement
+    description: Put pieces on the board under rules (n-queens, domino).
+
+  stack:
+    label: stack
+    description: Piles, columns, or layered cards (spider solitaire, sorting).
+
+  offline:
+    label: offline
+    description: Runs without network after load; puzzle data in git.
+
+  chrome:
+    label: chrome
+    description: Chrome-first; no install required.
+
+  single-player:
+    label: single-player
+    description: Solo play only — no multiplayer lobby.
+
+  minimal-animation:
+    label: minimal-animation
+    description: Static or step-based UI; no continuous 60fps action loop.
+
+  newspaper:
+    label: newspaper
+    description: Feels like a paper puzzle page — quiet, focused.
+
+  drag-drop:
+    label: drag-drop
+    description: Primary input is drag-and-drop.
+
+  click:
+    label: click
+    description: Primary input is click or tap.

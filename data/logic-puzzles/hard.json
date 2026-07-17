@@ -1,0 +1,30 @@
+{
+  "difficulty": "hard",
+  "clues": [
+    "The Swede owns the dog",
+    "The person who drinks Beer owns the Blue house",
+    "The Green house is immediately to the left of the White house",
+    "The owner of the Green house drinks Coffee",
+    "The person who plays Bridge owns the Bird"
+  ],
+  "categories": [
+    { "name": "Nationality", "items": ["Swede","Dane","Norwegian","German"] },
+    { "name": "Pet", "items": ["Dog","Bird","Cat","Fish"] },
+    { "name": "Drink", "items": ["Beer","Coffee","Tea","Water"] },
+    { "name": "Color", "items": ["Blue","Green","White","Yellow"] }
+  ],
+  "solution": {
+    "Nationality:Swede": "Dog",
+    "Nationality:Dane": "Bird",
+    "Nationality:Norwegian": "Fish",
+    "Nationality:German": "Cat",
+    "Pet:Dog": "Beer",
+    "Pet:Bird": "Coffee",
+    "Pet:Cat": "Tea",
+    "Pet:Fish": "Water",
+    "Drink:Beer": "Blue",
+    "Drink:Coffee": "Green",
+    "Drink:Tea": "White",
+    "Drink:Water": "Yellow"
+  }
+}

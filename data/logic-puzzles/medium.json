@@ -1,0 +1,24 @@
+{
+  "difficulty": "medium",
+  "clues": [
+    "The person who drives Red lives in the first house",
+    "Green is immediately to the left of White",
+    "The person who drives Blue drinks Coffee",
+    "The person who drives Green drinks Tea"
+  ],
+  "categories": [
+    { "name": "House", "items": ["1","2","3","4"] },
+    { "name": "Color", "items": ["Red","Green","White","Blue"] },
+    { "name": "Drink", "items": ["Coffee","Tea","Milk","Water"] }
+  ],
+  "solution": {
+    "House:1": "Red",
+    "House:2": "Green",
+    "House:3": "White",
+    "House:4": "Blue",
+    "Color:Red": "Coffee",
+    "Color:Green": "Tea",
+    "Color:White": "Milk",
+    "Color:Blue": "Water"
+  }
+}

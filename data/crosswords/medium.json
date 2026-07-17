@@ -1,0 +1,28 @@
+{
+  "difficulty": "medium",
+  "grid": [
+    ["","","S","T","A","R",""],
+    ["","","","","","",""],
+    ["","M","O","O","N","",""],
+    ["","","","","","",""],
+    ["","","S","U","N","",""],
+    ["","","","","","",""]
+  ],
+  "clues": {
+    "across": [
+      { "number": 1, "clue": "Celestial body that glows at night", "answer": "MOON" },
+      { "number": 2, "clue": "Our closest star", "answer": "SUN" }
+    ],
+    "down": [
+      { "number": 3, "clue": "Twinkling point of light", "answer": "STAR" }
+    ]
+  },
+  "solution": [
+    ["","","S","T","A","R",""],
+    ["","","","","","",""],
+    ["","M","O","O","N","",""],
+    ["","","","","","",""],
+    ["","","S","U","N","",""],
+    ["","","","","","",""]
+  ]
+}
