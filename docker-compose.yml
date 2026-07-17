@@ -1,0 +1,145 @@
+services:
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /data"
+    volumes:
+      - dynamodb-data:/data
+
+  gateway:
+    build: backend/services/gateway
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      SUDOKU_SERVICE_URL: "http://sudoku-service:5010"
+      NUMEROX_SERVICE_URL: "http://numerox-service:5011"
+      NUMEROX_LETTERS_SERVICE_URL: "http://numerox-letters-service:5012"
+      LOGIC_PUZZLES_SERVICE_URL: "http://logic-puzzles-service:5013"
+      CROSSWORDS_SERVICE_URL: "http://crosswords-service:5014"
+      TANGO_SERVICE_URL: "http://tango-service:5015"
+      N_QUEENS_SERVICE_URL: "http://n-queens-service:5016"
+    depends_on:
+      - sudoku-service
+      - numerox-service
+      - numerox-letters-service
+      - logic-puzzles-service
+      - crosswords-service
+      - tango-service
+      - n-queens-service
+
+  sudoku-service:
+    build: backend/services/sudoku
+    ports:
+      - "5010:5010"
+    environment:
+      PORT: "5010"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      - dynamodb-local
+
+  numerox-service:
+    build: backend/services/numerox
+    ports:
+      - "5011:5011"
+    environment:
+      PORT: "5011"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      - dynamodb-local
+
+  numerox-letters-service:
+    build: backend/services/numerox-letters
+    ports:
+      - "5012:5012"
+    environment:
+      PORT: "5012"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      - dynamodb-local
+
+  logic-puzzles-service:
+    build: backend/services/logic-puzzles
+    ports:
+      - "5013:5013"
+    environment:
+      PORT: "5013"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      - dynamodb-local
+
+  crosswords-service:
+    build: backend/services/crosswords
+    ports:
+      - "5014:5014"
+    environment:
+      PORT: "5014"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      - dynamodb-local
+
+  tango-service:
+    build: backend/services/tango
+    ports:
+      - "5015:5015"
+    environment:
+      PORT: "5015"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      - dynamodb-local
+
+  n-queens-service:
+    build: backend/services/n-queens
+    ports:
+      - "5016:5016"
+    environment:
+      PORT: "5016"
+      DYNAMODB_ENDPOINT: "http://dynamodb-local:8000"
+    depends_on:
+      - dynamodb-local
+
+  launcher:
+    build: frontend/apps/launcher
+    ports:
+      - "8091:8091"
+    depends_on:
+      - gateway
+
+  sudoku-frontend:
+    build: frontend/apps/sudoku
+    ports:
+      - "5001:5001"
+
+  numerox-frontend:
+    build: frontend/apps/numerox
+    ports:
+      - "5002:5002"
+
+  numerox-letters-frontend:
+    build: frontend/apps/numerox-letters
+    ports:
+      - "5003:5003"
+
+  logic-puzzles-frontend:
+    build: frontend/apps/logic-puzzles
+    ports:
+      - "5004:5004"
+
+  crosswords-frontend:
+    build: frontend/apps/crosswords
+    ports:
+      - "5005:5005"
+
+  tango-frontend:
+    build: frontend/apps/tango
+    ports:
+      - "5006:5006"
+
+  n-queens-frontend:
+    build: frontend/apps/n-queens
+    ports:
+      - "5007:5007"
+
+volumes:
+  dynamodb-data:
