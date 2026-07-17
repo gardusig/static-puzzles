@@ -1,18 +1,19 @@
 # gardusig/static-puzzles
 
-Production static puzzle games. **Meta-repo only** — leaf code in submodules.
+Production static puzzle games — React + TypeScript frontends, Node.js backend services.
+
+## Structure
+
+| Path | Role |
+| --- | --- |
+| [`frontend/`](frontend) | React + TypeScript puzzle apps |
+| [`backend/`](backend) | Node.js puzzle services |
+| [`data/`](data) | Puzzle data + game catalog |
+| [`docs/`](docs) | GAMES + REQUIREMENTS |
+| [`scripts/`](scripts) | Start and build helpers |
+
+## Quick start
 
 ```bash
-git submodule update --init --recursive
+./scripts/start.sh
 ```
-
-## Leaf submodules
-
-| Path | Repository | Role |
-| --- | --- | --- |
-| [`frontend/`](frontend/README.md) | [gardusig/static-puzzles-frontend](https://github.com/gardusig/static-puzzles-frontend) | TypeScript launcher and game shell |
-| [`backend/`](backend/README.md) | [gardusig/static-puzzles-backend](https://github.com/gardusig/static-puzzles-backend) | Go catalog API |
-| [`catalog/`](catalog/README.md) | [gardusig/static-puzzles-catalog](https://github.com/gardusig/static-puzzles-catalog) | `games.yaml` + puzzle data |
-| [`docs/`](docs/README.md) | [gardusig/static-puzzles-docs](https://github.com/gardusig/static-puzzles-docs) | GAMES + REQUIREMENTS |
-
-**Parent:** [gardusig/full-stack](https://github.com/gardusig/full-stack) · **Hub:** `public/full-stack/static-puzzles/`.
