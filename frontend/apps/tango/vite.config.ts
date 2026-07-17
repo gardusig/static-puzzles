@@ -9,9 +9,16 @@ export default defineConfig({
       name: 'gameTango',
       filename: 'remoteEntry.js',
       exposes: { './App': './src/App.tsx' },
-      shared: ['react', 'react-dom'],
+      shared: {
+        react: { singleton: true, requiredVersion: '^18.3.1' },
+        'react-dom': { singleton: true, requiredVersion: '^18.3.1' },
+      },
     }),
   ],
+  define: {
+    __API_URL__: JSON.stringify(process.env.API_URL || 'http://localhost:5015'),
+  },
   build: { modulePreload: false, target: 'esnext', minify: false, cssCodeSplit: false },
-  server: { port: 5006 },
+  server: { port: 5006, strictPort: true },
+  preview: { port: 5006, strictPort: true },
 })

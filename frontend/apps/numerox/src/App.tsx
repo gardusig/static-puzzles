@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
-const API = 'http://localhost:5011'
+declare const __API_URL__: string | undefined
+const API = __API_URL__ || "http://localhost:5011"
 const STORAGE_KEY = 'numerox-history'
 
 interface SolvedEntry { id: string; difficulty: string; solvedAt: string }

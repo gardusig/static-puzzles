@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
-const API = 'http://localhost:5013'
+declare const __API_URL__: string | undefined
+const API = __API_URL__ || "http://localhost:5013"
 const STORAGE_KEY = 'logic-puzzles-history'
 interface SolvedEntry { id: string; difficulty: string; solvedAt: string }
 function getHistory(): SolvedEntry[] { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]') } catch { return [] } }

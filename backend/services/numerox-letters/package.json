@@ -11,10 +11,12 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.721.0",
     "@aws-sdk/lib-dynamodb": "^3.721.0",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.17",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3"
   }

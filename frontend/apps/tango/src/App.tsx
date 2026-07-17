@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
-const API = 'http://localhost:5015'
+declare const __API_URL__: string | undefined
+const API = __API_URL__ || "http://localhost:5015"
 const STORAGE_KEY = 'tango-history'
 const SIZE = 6
 

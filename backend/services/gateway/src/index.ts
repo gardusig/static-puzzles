@@ -1,10 +1,13 @@
-import express from 'express'
+import express, { type Request, type Response } from 'express'
+import cors from 'cors'
 import { createProxyMiddleware } from 'http-proxy-middleware'
 
 const app = express()
 const PORT = parseInt(process.env.PORT || '8080', 10)
 
-const services: Record<string, string> = {
+app.use(cors())
+
+const SERVICES: Record<string, string> = {
   '/api/sudoku': process.env.SUDOKU_SERVICE_URL || 'http://localhost:5010',
   '/api/numerox': process.env.NUMEROX_SERVICE_URL || 'http://localhost:5011',
   '/api/numerox-letters': process.env.NUMEROX_LETTERS_SERVICE_URL || 'http://localhost:5012',
@@ -14,15 +17,15 @@ const services: Record<string, string> = {
   '/api/n-queens': process.env.N_QUEENS_SERVICE_URL || 'http://localhost:5016',
 }
 
-app.get('/health', (_req, res) => {
-  res.send('ok')
+app.get('/health', (_req: Request, res: Response) => {
+  res.json({ status: 'ok', service: 'gateway', timestamp: new Date().toISOString() })
 })
 
-app.get('/api/services', (_req, res) => {
-  res.json({ services: Object.keys(services) })
+app.get('/api/services', (_req: Request, res: Response) => {
+  res.json({ services: Object.keys(SERVICES) })
 })
 
-for (const [prefix, target] of Object.entries(services)) {
+for (const [prefix, target] of Object.entries(SERVICES)) {
   app.use(prefix, createProxyMiddleware({
     target,
     changeOrigin: true,
@@ -30,9 +33,12 @@ for (const [prefix, target] of Object.entries(services)) {
   }))
 }
 
-app.listen(PORT, () => {
-  console.log(`gateway listening on :${PORT}`)
-  for (const [prefix, target] of Object.entries(services)) {
+const server = app.listen(PORT, () => {
+  console.log(`[gateway] listening on :${PORT}`)
+  for (const [prefix, target] of Object.entries(SERVICES)) {
     console.log(`  ${prefix} -> ${target}`)
   }
 })
+
+process.on('SIGTERM', () => { server.close(() => process.exit(0)) })
+process.on('SIGINT', () => { server.close(() => process.exit(0)) })

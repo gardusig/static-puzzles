@@ -1,0 +1,31 @@
+{
+  "difficulty": "easy",
+  "clues": [
+    "Alice does not own the cat",
+    "Bob owns the dog",
+    "The person who owns the fish is not Carol",
+    "Dave owns the bird"
+  ],
+  "categories": [
+    { "name": "Person", "items": ["Alice","Bob","Carol","Dave"] },
+    { "name": "Pet", "items": ["Cat","Dog","Fish","Bird"] }
+  ],
+  "solution": {
+    "Alice:Cat": false,
+    "Alice:Dog": false,
+    "Alice:Fish": true,
+    "Alice:Bird": false,
+    "Bob:Cat": false,
+    "Bob:Dog": true,
+    "Bob:Fish": false,
+    "Bob:Bird": false,
+    "Carol:Cat": true,
+    "Carol:Dog": false,
+    "Carol:Fish": false,
+    "Carol:Bird": false,
+    "Dave:Cat": false,
+    "Dave:Dog": false,
+    "Dave:Fish": false,
+    "Dave:Bird": true
+  }
+}

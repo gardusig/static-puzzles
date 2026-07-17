@@ -1,0 +1,18 @@
+{
+  "difficulty": "medium",
+  "grid": [
+    ["","","","",""],
+    ["","B","","",""],
+    ["","","","",""],
+    ["","","","D",""],
+    ["","","","",""]
+  ],
+  "solution": [
+    ["A","B","C","D","E"],
+    ["E","A","B","C","D"],
+    ["D","E","A","B","C"],
+    ["C","D","E","A","B"],
+    ["B","C","D","E","A"]
+  ],
+  "words": ["ABCDE","EABCD","DEABC","CDEAB","BCDEA","AEDCB","BAEDC","CBAED","DCBAE","EDCBA"]
+}
